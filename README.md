@@ -1,4 +1,5 @@
 # setting up Confluent with docker
+Note, not full project code is posted here, just all of the main files that I had made changes in. Also note this is assuming you are running code mainly on Windows with Command Prompt
 
 ## installing docker desktop
 - make sure you have latest Windows 10 update (can take hours)
@@ -104,7 +105,7 @@
 	- use `./zkServer.sh` to see list of commands you can do with it if on git bash or terminal
 	- probably want to use `start`
 - open up another command prompt to enter command to start kafka
-	- “.\bin\windows\kafka-server-start.bat ./config/server.properties”
+	- “.\bin\windows\kafka-server-start.bat .\config\server.properties”
 	- issue that can pop up....
 		- java.lang.OutOfMemoryError: Java heap space while running kafka
 		- one solution is to go to bin\windows and edit the kafka-server-start script to also be 512M instead of 1G
