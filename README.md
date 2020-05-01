@@ -156,13 +156,14 @@ Note, not full project code is posted here, just all of the main files that I ha
 	- `<PackageReference Include="Confluent.Kafka" Version="1.4.0" />`
 	- ignore above, it will cause an error, just go to manage nuget packages and install from there or wrap above between `<ItemGroup></ItemGroup>`
 - Head into appsettings.json and add this above "AllowedHosts"
-	- ```
+	- 
+```csharp
 "producer": {
     "bootstrapservers": "localhost:9092"
 },
 ```
 - now head to startup.cs file and add inside ConfigureServices
-```
+```csharp
 var producerConfig = new ProducerConfig();
 Configuration.Bind("producer", producerConfig);
 
