@@ -180,3 +180,33 @@ services.AddSingleton<ProducerConfig>(producerConfig);
 - creating Consumer .Net code
 	- create console app for consumer
 	- main code used will be in main and after running the code, if you do the same POST like we did to test consumer, will be shown
+
+---
+
+# Commands list
+- restart all exited containers
+	- docker start $(docker ps -a -q --filter "status=exited")
+- stops all Docker containers
+	- docker stop $(docker ps -a -q)
+- removing containers
+	- docker rm -f $(docker ps -a -q)
+- And similar for all images:
+	- docker rmi $(docker images -q)
+- lists containers related to images declared in the docker-compose.yml
+	- docker-compose ps command 
+- start up zookeeper
+	- ./zkServer.sh start
+- start up kafka
+	- .\bin\windows\kafka-server-start.bat .\config\server.properties
+- Create Topic
+	- C:\kafka-2.12\bin\windows>	kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic temp-topic
+- Start Producer 
+	- C:\kafka-2.12\bin\windows>	kafka-console-producer.bat --broker-list localhost:9092 --topic temp-topic
+- Start Consumer
+	- C:\kafka-2.12\bin\windows>	kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic temp-topic --from-beginning
+- Topics in the list
+	- C:\kafka-2.12\bin\windows>	kafka-topics --zookeeper localhost:2181 --list
+- Describe Topic
+	- kafka-topics.bat --describe --zookeeper localhost:2181 --topic [Topic Name]
+- Delete Topic: 
+	- kafka-run-class.bat kafka.admin.TopicCommand --delete --topic [topic_to_delete] --zookeeper localhost:2181
